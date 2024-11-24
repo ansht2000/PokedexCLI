@@ -21,7 +21,7 @@ func (c *Client) GetLocationPok(locationName string) (LocationPokRes, error) {
 
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
-		return LocationPokRes{}, nil
+		return LocationPokRes{}, err
 	}
 	
 	res, err := c.httpClient.Do(req)
@@ -35,7 +35,7 @@ func (c *Client) GetLocationPok(locationName string) (LocationPokRes, error) {
 
 	data, err := io.ReadAll(res.Body)
 	if err != nil {
-		return LocationPokRes{}, nil
+		return LocationPokRes{}, err
 	}
 
 	locationPokRes := LocationPokRes{}
