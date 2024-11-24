@@ -51,5 +51,7 @@ func (c *Client) ListLocations(pageURL *string) (LocationAreasRes, error) {
 		return LocationAreasRes{}, err
 	}
 
+	// value was not found in the cache, add it to the cache
+	c.cache.Add(url, data)
 	return locationsRes, nil
 }

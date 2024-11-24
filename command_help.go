@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 // List the commands from the commands map
-func commandHelp(cfg *config) error {
+func commandHelp(cfg *config, args ...string) error {
 	fmt.Println()
 	fmt.Println("Welcome to the Pokedex!")
 	fmt.Println("Usage:")
