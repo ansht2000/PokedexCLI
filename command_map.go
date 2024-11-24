@@ -20,6 +20,10 @@ func commandMapf(cfg *config) error {
 	return nil
 }
 
+// This method looks very similar to the above method
+// and could be condensed to one function that both
+// methods use, but splitting them up like this
+// makes the cfg struct track the current location better
 func commandMapb(cfg *config) error {
 	if cfg.prevLocationsURL == nil {
 		return errors.New("You're already on the first page!")

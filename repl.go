@@ -14,6 +14,7 @@ type config struct {
 	prevLocationsURL 	*string
 }
 
+// Start the REPL loop
 func startRepl(cfg *config) {
 	reader := bufio.NewScanner(os.Stdin)
 	for {
