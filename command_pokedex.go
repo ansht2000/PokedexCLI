@@ -8,7 +8,7 @@ func commandPokedex(cfg *config, args ...string) error {
 		return nil
 	}
 
-	for name, _ := range cfg.caughtPokemon {
+	for name := range cfg.caughtPokemon {
 		fmt.Println("  -", name)
 	}
 	return nil

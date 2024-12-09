@@ -26,7 +26,7 @@ func commandMapf(cfg *config, args ...string) error {
 // makes the cfg struct track the current location better
 func commandMapb(cfg *config, args ...string) error {
 	if cfg.prevLocationsURL == nil {
-		return errors.New("You're already on the first page!")
+		return errors.New("you're already on the first page")
 	}
 
 	locationsRes, err := cfg.pokeapiClient.ListLocations(cfg.prevLocationsURL)

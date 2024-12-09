@@ -8,7 +8,7 @@ import (
 // List the pokemon in a given area
 func commandExplore(cfg *config, args ...string) error {
 	if len(args) != 1 {
-		return errors.New("You have to provide a location name!")
+		return errors.New("you have to provide a location name")
 	}
 
 	name := args[0]
