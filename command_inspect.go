@@ -7,7 +7,7 @@ func commandInspect(cfg *config, args ...string) error {
 		fmt.Println("You must provide the name of the pokemon to inspect")
 	}
 	pokemonName := args[0]
-	
+
 	pokemon, ok := cfg.caughtPokemon[pokemonName]
 	if !ok {
 		fmt.Printf("You have not caught the pokemon: %s\n", pokemonName)

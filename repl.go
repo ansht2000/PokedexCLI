@@ -1,28 +1,28 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
-	"strings"
 	"github.com/ansht2000/PokedexCLI/internal/pokeapi"
+	"github.com/chzyer/readline"
+	"strings"
 )
 
 type config struct {
-	pokeapiClient 		pokeapi.Client
-	nextLocationsURL 	*string
-	prevLocationsURL 	*string
-	caughtPokemon		map[string]pokeapi.Pokemon
+	pokeapiClient    pokeapi.Client
+	nextLocationsURL *string
+	prevLocationsURL *string
+	caughtPokemon    map[string]pokeapi.Pokemon
 }
 
 // Start the REPL loop
-func startRepl(cfg *config) {
-	reader := bufio.NewScanner(os.Stdin)
+func startRepl(cfg *config, rl *readline.Instance) {
 	for {
-		fmt.Print("Pokedex > ")
-		reader.Scan()
+		line, err := rl.Readline()
+		if err != nil {
+			break
+		}
 
-		words := cleanInput(reader.Text())
+		words := cleanInput(line)
 		if len(words) == 0 {
 			continue
 		}
@@ -67,14 +67,14 @@ func getCommands() map[string]cliCommand {
 			callback:    commandHelp,
 		},
 		"catch": {
-			name: 			"catch <pokemon_name>",
-			description: 	"Attempt to catch a pokemon",
-			callback: 		commandCatch,
+			name:        "catch <pokemon_name>",
+			description: "Attempt to catch a pokemon",
+			callback:    commandCatch,
 		},
 		"pokedex": {
-			name: "pokedex",
+			name:        "pokedex",
 			description: "List the pokemon in your pokedex",
-			callback: commandPokedex,
+			callback:    commandPokedex,
 		},
 		"inspect": {
 			name:        "inspect <pokemon_name>",
@@ -82,9 +82,9 @@ func getCommands() map[string]cliCommand {
 			callback:    commandInspect,
 		},
 		"explore": {
-			name: 			"explore <location_name>",
-			description: 	"Explore a location's pokemon spawns",
-			callback: 		commandExplore,
+			name:        "explore <location_name>",
+			description: "Explore a location's pokemon spawns",
+			callback:    commandExplore,
 		},
 		"map": {
 			name:        "map",
