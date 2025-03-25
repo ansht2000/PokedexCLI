@@ -29,7 +29,7 @@ func (c *Client) GetLocationPok(locationName string) (LocationPokRes, error) {
 		return LocationPokRes{}, err
 	}
 	if res.StatusCode == http.StatusNotFound {
-		return LocationPokRes{}, fmt.Errorf("You have provided an invalid area name: %s", locationName)
+		return LocationPokRes{}, fmt.Errorf("you have provided an invalid area name: %s", locationName)
 	}
 	defer res.Body.Close()
 

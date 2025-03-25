@@ -29,7 +29,7 @@ func (c *Client) GetPokemon(pokemonName string) (Pokemon, error) {
 		return Pokemon{}, err
 	}
 	if res.StatusCode == http.StatusNotFound {
-		return Pokemon{}, fmt.Errorf("You have provided an invalid pokemon name: %s", pokemonName)
+		return Pokemon{}, fmt.Errorf("you have provided an invalid pokemon name: %s", pokemonName)
 	}
 	defer res.Body.Close()
 
